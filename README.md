@@ -3,7 +3,7 @@
 GUI-Application and CLI for solving math terms and equations, written in Java.
 
 ## Disclaimer
-This tool was created during my studies as a school project. **There is no guarantee for correctness and completeness.**
+This tool was created during my studies as a school project in 2015. **No guarantee is given for accuracy or completeness.**
 
 ## Examples
 
