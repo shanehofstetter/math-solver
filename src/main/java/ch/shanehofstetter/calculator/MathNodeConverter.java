@@ -14,10 +14,6 @@ import java.util.Scanner;
 
 import static ch.shanehofstetter.calculator.Operators.*;
 
-/**
- * Author: Shane Hofstetter
- */
-
 public class MathNodeConverter {
     //All numberNodes in input-order
     ArrayList<MathNumberNode> numberNodes;
@@ -41,9 +37,7 @@ public class MathNodeConverter {
             scanTerm(mathTerm);
             return computeCharList();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            printErrorMessage();
-            calculator.showError(ex.getMessage());
+            calculator.showError(ex.getMessage(), ex);
             return null;
         }
     }
@@ -123,8 +117,7 @@ public class MathNodeConverter {
                     isNumber = false;
                 }
             } catch (NoSuchElementException exc) {
-                System.out.println("Exception occurred: " + exc.getMessage());
-                calculator.showError("An error occurred.");
+                calculator.showError("An error occurred.", exc);
             }
         }
     }
@@ -273,8 +266,7 @@ public class MathNodeConverter {
             operators.remove(operatorIndex);
             numberNodes.add(index, stepResultNode);
         } catch (Exception e) {
-            System.out.println("Error!: " + e.toString());
-            printErrorMessage();
+            printErrorMessage(e);
         }
     }
 
@@ -341,7 +333,7 @@ public class MathNodeConverter {
         //Clean empty braces
         for (int operatorIndex = 0; operatorIndex < operators.size(); operatorIndex++) {
             try {
-                //Check should be save as long as user gives a correct math term
+                //Check should be safe as long as user gives a correct math term
                 if (operators.get(operatorIndex).equals(OPEN_BRACE) && operators.get(operatorIndex + 1).equals(CLOSE_BRACE)) {
                     operators.remove(operatorIndex);
                     operators.remove(operatorIndex);
@@ -349,8 +341,7 @@ public class MathNodeConverter {
             } catch (IndexOutOfBoundsException e) {
                 // can happen because of operators.get(j + 1)...
                 // but should not happen in normal cases
-                System.out.println("Error, incorrect maths term! (Braces must be closed)");
-                calculator.showError("Error, incorrect maths term! (Braces must be closed)");
+                calculator.showError("Error, incorrect maths term! (Braces must be closed)", e);
             }
         }
     }
@@ -381,7 +372,6 @@ public class MathNodeConverter {
             if ((char_index + 1) < charList.size()) {
                 if (isNumber) {
                     try {
-                        //noinspection ResultOfMethodCallIgnored
                         Double.valueOf(Character.toString(charList.get(char_index + 1)));
                     } catch (Exception e) {
                         isNumber = false;
@@ -412,7 +402,6 @@ public class MathNodeConverter {
             }
         }
         String cleanTerm = makeStringFromChars(charList);
-        System.out.println("clean math term: [" + cleanTerm + "]");
         calculator.showOutput("clean math term: [" + cleanTerm + "]");
         return cleanTerm;
     }
@@ -449,10 +438,8 @@ public class MathNodeConverter {
         return string.toString();
     }
 
-    private void printErrorMessage() {
-        System.out.println("Error in your input!");
-        System.out.println("Please enter a valid mathematical term or equation.");
-        calculator.showError("Please enter a valid mathematical term or equation.");
+    private void printErrorMessage(Exception e) {
+        calculator.showError("Please enter a valid mathematical term or equation.", e);
     }
 
 }

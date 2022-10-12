@@ -3,9 +3,6 @@ package ch.shanehofstetter.calculator;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Shane Hofstetter on 21.08.2015.
- */
 public final class Constants {
 
     public static final double LIGHTSPEED = 299792458;

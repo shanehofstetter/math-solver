@@ -6,11 +6,11 @@ public class CalcMain {
     /**
      * @param args the command line arguments
      */
-    @SuppressWarnings("AssertWithSideEffects")
     public static void main(String[] args) {
         Calculator c = new Calculator();
-        //Tests
+        c.addListener(new StdoutListener());
 
+        //Tests
         assert c.solveStringTerm("4 * 2 ^ ( 4 / 2 * 4 % 3 )") == 16.0;
         assert c.solveStringTerm("3+4*5 + 8^(1/3)") == 25.0;
         assert c.solveStringTerm("3.45+4.1235235*5.4523525+8^(1/3)") == 27.93290366403375;
@@ -49,7 +49,6 @@ public class CalcMain {
 
         //quadratic .. solve with abc formula ---->>> 2 results!
         //assert c.solveStringTerm("1/x + 4 + 5/6 + 2x = 56") == 25.5637744062338;
-
         assert c.solveStringTerm("x + 4 + 5/6 + 2x = 56") == 17.055555555555554;
 
         //one occurrence of x

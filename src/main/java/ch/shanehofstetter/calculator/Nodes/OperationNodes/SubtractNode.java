@@ -103,7 +103,6 @@ public class SubtractNode extends OperationNode {
 
     private double subtract(double i, double j) {
         double result = i - j;
-        System.out.println(i + " - " + j + " = " + result);
         parent.showOutput(i + " - " + j + " = " + result);
         return result;
     }

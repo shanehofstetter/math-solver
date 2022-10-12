@@ -5,9 +5,6 @@ import ch.shanehofstetter.calculator.Calculator;
 import ch.shanehofstetter.calculator.Nodes.MathNode;
 import ch.shanehofstetter.calculator.Nodes.NumberNodes.MathNumberNode;
 
-/**
- * Created by Shane on 12.07.2015.
- */
 public class FactorialCounterNode extends OperationNode {
     private MathNode childNode;
 

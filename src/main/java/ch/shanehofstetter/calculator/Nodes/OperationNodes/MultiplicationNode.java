@@ -108,7 +108,6 @@ public class MultiplicationNode extends OperationNode {
 
     private double multiplicate(double i, double j) {
         double result = i * j;
-        System.out.println(i + " * " + j + " = " + result);
         parent.showOutput(i + " * " + j + " = " + result);
         return result;
     }

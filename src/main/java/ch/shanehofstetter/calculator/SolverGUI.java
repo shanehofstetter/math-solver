@@ -56,6 +56,7 @@ public class SolverGUI extends Application implements GuiListener {
 
         calculator = new Calculator();
         calculator.addListener(this);
+        calculator.addListener(new StdoutListener());
         Constants.init();
 
         primaryStage.setTitle(TITLE);
@@ -262,7 +263,7 @@ public class SolverGUI extends Application implements GuiListener {
 
     @Override
     public void showOutput(String output) {
-        outputList.add(output);
+        outputList.add(output.trim());
     }
 
     @Override
@@ -289,7 +290,7 @@ public class SolverGUI extends Application implements GuiListener {
     }
 
     @Override
-    public void showError(String error) {
+    public void showError(String error, Exception exception) {
         showErrorLabel(true);
         errorLabel.setText(error);
     }

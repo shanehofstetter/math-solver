@@ -4,9 +4,6 @@ import ch.shanehofstetter.calculator.Calculator;
 import ch.shanehofstetter.calculator.Nodes.MathNode;
 import ch.shanehofstetter.calculator.Nodes.NumberNodes.MathNumberNode;
 
-/**
- * Created by Shane on 12.07.2015.
- */
 public class LogarithmNode extends OperationNode {
     private MathNode base;
     private MathNode logarithm;
@@ -31,7 +28,6 @@ public class LogarithmNode extends OperationNode {
 
     protected Double calculateLog(Double base, Double log) {
         Double result = Math.log10(log) / Math.log10(base);
-        System.out.println("log " + log + " of base " + base + " = " + result);
         parent.showOutput("log " + log + " of base " + base + " = " + result);
         return result;
     }

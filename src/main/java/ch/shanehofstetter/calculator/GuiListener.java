@@ -9,5 +9,5 @@ public interface GuiListener {
 
     void showResult(String result);
 
-    void showError(String error);
+    void showError(String error, Exception exception);
 }

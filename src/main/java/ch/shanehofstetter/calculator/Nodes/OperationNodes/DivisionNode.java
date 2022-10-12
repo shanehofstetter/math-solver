@@ -68,7 +68,6 @@ public class DivisionNode extends OperationNode {
      */
     private double divide(double dividend, double divisor) {
         double result = dividend / divisor;
-        System.out.println(dividend + " / " + divisor + " = " + result);
         parent.showOutput(dividend + " / " + divisor + " = " + result);
 
         return result;

@@ -44,7 +44,6 @@ public class FactorialNode extends OperationNode {
         for (int i = 1; i <= n; i++) {
             fact *= i;
         }
-        System.out.println(n + "! = " + fact);
         parent.showOutput(n + "! = " + fact);
         return fact;
     }

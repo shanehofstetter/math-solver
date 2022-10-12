@@ -38,7 +38,6 @@ public class ModuloNode extends OperationNode {
 
     protected double modulo(double i, double j) {
         double result = i % j;
-        System.out.println(i + " % " + j + " = " + result);
         parent.showOutput(i + " % " + j + " = " + result);
         return result;
     }

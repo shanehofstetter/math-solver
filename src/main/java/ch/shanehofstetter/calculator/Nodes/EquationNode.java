@@ -29,7 +29,6 @@ public class EquationNode extends MathNode {
 
     public void setResult(Double result) {
         this.result = result;
-        System.out.println("\nRESULT\t" + leftSideOfEquation.getName() + " = " + result);
         parent.showResult(leftSideOfEquation.getName() + " = " + result);
     }
 

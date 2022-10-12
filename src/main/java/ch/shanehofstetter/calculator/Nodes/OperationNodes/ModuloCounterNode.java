@@ -3,9 +3,6 @@ package ch.shanehofstetter.calculator.Nodes.OperationNodes;
 import ch.shanehofstetter.calculator.Calculator;
 import ch.shanehofstetter.calculator.Nodes.NumberNodes.MathNumberNode;
 
-/**
- * Created by Shane on 12.07.2015.
- */
 public class ModuloCounterNode extends ModuloNode {
 
     private Double neededModuloResult;

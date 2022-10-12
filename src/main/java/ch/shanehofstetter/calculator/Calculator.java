@@ -41,6 +41,10 @@ public class Calculator {
     public Double solveStringTerm(String term) {
         MathNodeConverter converter = new MathNodeConverter(this);
         MathNode node = converter.convertToNode(term);
+        if (node == null) {
+            printErrorMessage();
+            return null;
+        }
         try {
             if (node instanceof EquationNode) {
                 return computeEquationNode((EquationNode) node);
@@ -48,44 +52,36 @@ public class Calculator {
                 return computeNode(node);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
             printErrorMessage();
-            showError(ex.getMessage());
+            showError(ex.getMessage(), ex);
             return null;
         }
     }
 
-    private double computeNode(MathNode result) throws Exception {
-        if (result != null) {
-            if (result instanceof NodeNumberNode) {
-                //last node is a NodeNumberNode which contains an OperationNode
-                System.out.println("\nmath term converted to tree:");
-                ((NodeNumberNode) result).getNode().print();
-                showTree(((NodeNumberNode) result).getNode());
-                if (((NodeNumberNode) result).getNode() instanceof OperationNode) {
-                    System.out.println("\nsolve tree:");
+    private Double computeNode(MathNode result) throws Exception {
+        if (result instanceof NodeNumberNode) {
+            //last node is a NodeNumberNode which contains an OperationNode
+            showTree(((NodeNumberNode) result).getNode());
+            if (((NodeNumberNode) result).getNode() instanceof OperationNode) {
+                showOutput("\nsolve tree:");
 
-                    MathNode node = ((NodeNumberNode) result).getNode();
-                    OperationNode resultNode = (OperationNode) node;
-                    resultNode.doOperation();
+                MathNode node = ((NodeNumberNode) result).getNode();
+                OperationNode resultNode = (OperationNode) node;
+                resultNode.doOperation();
 
-                    printResult(((MathNumberNode) resultNode.getResult()).getNumber());
-                    return ((MathNumberNode) resultNode.getResult()).getNumber();
-                }
-            } else {
-                //last node is a MathNumber, user didn't give a real math-term..
-                printResult(((MathNumberNode) result).getNumber());
-                return ((MathNumberNode) result).getNumber();
+                printResult(((MathNumberNode) resultNode.getResult()).getNumber());
+                return ((MathNumberNode) resultNode.getResult()).getNumber();
             }
+        } else {
+            //last node is a MathNumber, user didn't give a real math-term..
+            printResult(((MathNumberNode) result).getNumber());
+            return ((MathNumberNode) result).getNumber();
         }
-        printErrorMessage();
-        return Double.NaN;
+        return null;
     }
 
     private Double computeEquationNode(EquationNode equationNode) {
         if (equationNode != null) {
-            System.out.println("\nequation converted to tree:");
-            equationNode.print();
             showTree(equationNode);
             try {
                 equationNode.solveEquation();
@@ -99,24 +95,19 @@ public class Calculator {
     }
 
     private void printResult(double result) {
-        System.out.println("RESULT\t= " + result);
         showResult("" + result);
     }
 
     private void printErrorMessage() {
-        System.out.println("Error in your input!");
-        System.out.println("Please enter a valid mathematical term or equation.");
-        showError("Please enter a valid mathematical term or equation.");
+        showError("Please enter a valid mathematical term or equation.", null);
     }
 
     private void printEquationErrorMessage(String errorMessage) {
-        System.out.println("Error: " + errorMessage);
-        System.out.println("Please enter a valid equation with only one unknown variable.");
-        showError(errorMessage);
+        showError(errorMessage, null);
     }
 
     private void printEquationError() {
-        System.out.println("Please enter a valid equation with only one unknown variable.");
+        showError("Please enter a valid equation with only one unknown variable.", null);
     }
 
     public void addListener(GuiListener toAdd) {
@@ -133,9 +124,9 @@ public class Calculator {
             listener.showResult(result);
     }
 
-    public void showError(String error) {
+    public void showError(String error, Exception exception) {
         for (GuiListener listener : listeners)
-            listener.showError(error);
+            listener.showError(error, exception);
     }
 
     private void showTree(MathNode rootNode) {

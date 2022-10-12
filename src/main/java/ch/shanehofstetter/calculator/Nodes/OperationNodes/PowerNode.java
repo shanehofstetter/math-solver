@@ -43,7 +43,6 @@ public class PowerNode extends OperationNode {
 
     private double power(double i, double j) {
         double result = Math.pow(i, j);
-        System.out.println(i + " ^ " + j + " = " + result);
         parent.showOutput(i + " ^ " + j + " = " + result);
         return result;
     }

@@ -92,7 +92,6 @@ public class SumNode extends OperationNode {
 
     private double sum(double i, double j) {
         double result = i + j;
-        System.out.println(i + " + " + j + " = " + result);
         parent.showOutput(i + " + " + j + " = " + result);
         return result;
     }
