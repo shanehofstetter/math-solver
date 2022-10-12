@@ -16,6 +16,10 @@ Run `ch.shanehofstetter.calculator.SolverGUI.main`
 
 ### CLI
 
-Run `ch.shanehofstetter.calculator.CalcMain.main`
+Run `ch.shanehofstetter.calculator.SolverCLI.main`
 
 <img width="871" alt="CLI Example 1" src="https://user-images.githubusercontent.com/13404717/194757582-179cd817-db50-40ea-b777-d121b5e166f7.png">
+
+## Testing
+
+Run `ch.shanehofstetter.calculator.TestSuite.main`

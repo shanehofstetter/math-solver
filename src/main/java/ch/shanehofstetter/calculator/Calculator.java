@@ -8,35 +8,13 @@ import ch.shanehofstetter.calculator.Nodes.OperationNodes.OperationNode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class Calculator {
 
     //TODO: when solving not linear equations, e.g. x^2 -> there need to be >1 results
 
-    private final String exit = "exit";
     private final List<GuiListener> listeners = new ArrayList<>();
-
-    public void startWaitingForInput() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            printDefaultMessage();
-            while (scanner.hasNextLine()) { // scanner blocks on this line
-                String line = scanner.nextLine();
-                if (line.equals(exit)) {
-                    break;
-                }
-                solveStringTerm(line);
-                printDefaultMessage();
-            }
-        }
-    }
-
-    private void printDefaultMessage() {
-        System.out.println("-------------------------------------------");
-        System.out.printf("Quit with '%s'%n", exit);
-        System.out.println("Enter your maths term (example: 2 * 3 + 4):");
-    }
 
     public Double solveStringTerm(String term) {
         MathNodeConverter converter = new MathNodeConverter(this);

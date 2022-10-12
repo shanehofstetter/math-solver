@@ -1,7 +1,7 @@
 package ch.shanehofstetter.calculator;
 
 
-public class CalcMain {
+public class TestSuite {
 
     /**
      * @param args the command line arguments
@@ -56,7 +56,5 @@ public class CalcMain {
         assert c.solveStringTerm("2*8-12/(2-x)+4-2=3*4-1/2") == 0.15384615384615374;
         assert c.solveStringTerm("4 * 2 ^ ( 4 / x ) = 100") == 0.861353116146786;
         assert c.solveStringTerm("(x-10)^(1/2)-4=0") == 26.0;
-
-        c.startWaitingForInput();
     }
 }
