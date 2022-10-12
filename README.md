@@ -22,4 +22,4 @@ Run `ch.shanehofstetter.calculator.SolverCLI.main`
 
 ## Testing
 
-Run `ch.shanehofstetter.calculator.TestSuite.main`
+Run `ch.shanehofstetter.calculator.TestSuite.main` with enabled assertions (VM parameter `-enableassertions`)

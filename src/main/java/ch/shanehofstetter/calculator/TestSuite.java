@@ -24,6 +24,9 @@ public class TestSuite {
         assert c.solveStringTerm("-6*4/(-3*2)+22%5*4^2-8+2*(1+(4!+(3+5*2-3)-3)-2)") == 88.0;
         assert c.solveStringTerm("(-3)*(-4)/(-2)*(-6)-7*8*9*(-10)/(14*18*(-20))+0/13") == 35.0;
 
+        assert c.solveStringTerm("10E2") == 1000.0;
+        assert c.solveStringTerm("10E2/4") == 250.0;
+
         //Equations
         assert c.solveStringTerm("2x = 4") == 2.0;
         assert c.solveStringTerm("2x * 2 = 4") == 1.0;
