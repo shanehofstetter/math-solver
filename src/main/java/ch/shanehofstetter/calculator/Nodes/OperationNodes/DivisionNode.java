@@ -137,14 +137,6 @@ public class DivisionNode extends OperationNode {
                                 newDividend = new SubtractNode(parent);
                                 ((SubtractNode) newDividend).setMinuend(getDividend());
                                 ((SubtractNode) newDividend).setSubtrahend(((DivisionNode) unknownPart).getDividend());
-//                                DivisionNode newDivision = new DivisionNode(parent);
-//                                if (newDividend.getResult() == null){
-//                                    newDivision.setDividend(newDividend);
-//                                } else {
-//                                    newDivision.setDividend(newDividend.getResult());
-//                                }
-//                                newDivision.setDivisor(myUnknown);
-//                                return newDivision;
                             } else {
                                 return this;
                             }

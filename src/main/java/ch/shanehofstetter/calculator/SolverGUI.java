@@ -69,12 +69,9 @@ public class SolverGUI extends Application implements GuiListener {
         BorderPane root = new BorderPane();
 
         VBox verticalLayout = new VBox(DEFAULT_SPACING);
-        //verticalLayout.setVgrow(outputPane, Priority.ALWAYS);
         verticalLayout.setSpacing(DEFAULT_SPACING);
-        //verticalLayout.setPadding(new Insets(10));
         outputPane.setContent(output);
         verticalLayout.getChildren().add(outputPane);
-        //verticalLayout.getChildren().add(output);
 
         VBox leftSideVerticalBox = new VBox();
         leftSideVerticalBox.setSpacing(DEFAULT_SPACING);
@@ -91,15 +88,12 @@ public class SolverGUI extends Application implements GuiListener {
         overallLayout.setPadding(new Insets(DEFAULT_SPACING));
         overallLayout.getChildren().add(leftSideVerticalBox);
         overallLayout.getChildren().add(verticalLayout);
-//        overallLayout.setStyle("-fx-background-color: #adadad;");
         HBox.setHgrow(verticalLayout, Priority.ALWAYS);
 
         HBox middleLayout = new HBox(DEFAULT_SPACING);
         resultTree = new TreeView<>();
         TitledPane treePane = new TitledPane(TREE_TITLE, resultTree);
         treePane.setCollapsible(false);
-        //Label treeTitle = new Label("Hierarchical View:");
-        //verticalLayout.getChildren().add(treeTitle);
 
         resultListView = new ListView<>();
         resultList = FXCollections.observableArrayList();
@@ -120,7 +114,6 @@ public class SolverGUI extends Application implements GuiListener {
         middleLayout.getChildren().add(resultListPane);
 
         verticalLayout.getChildren().add(middleLayout);
-        //verticalLayout.setVgrow(treePane, Priority.ALWAYS);
 
         resultText = new TextField("");
         resultText.setEditable(false);
@@ -138,7 +131,6 @@ public class SolverGUI extends Application implements GuiListener {
 
         inputText = new TextField();
         inputText.promptTextProperty().setValue(INPUT_PROMPT);
-//        inputText.setPrefWidth(400);
 
         Button calculateBtn = new Button(SOLVE);
         calculateBtn.setMinWidth(50);
@@ -149,7 +141,6 @@ public class SolverGUI extends Application implements GuiListener {
         horizontalLayout.setSpacing(DEFAULT_SPACING);
         horizontalLayout.getChildren().add(inputText);
         horizontalLayout.getChildren().add(calculateBtn);
-//        horizontalLayout.setPrefWidth(500);
         horizontalLayout.setFillHeight(true);
         HBox.setHgrow(inputText, Priority.ALWAYS);
 
